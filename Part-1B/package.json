@@ -1,0 +1,14 @@
+{
+  "name": "natural-language-reminder-agent-part1b",
+  "version": "1.0.0",
+  "description": "Natural-Language Reminder AI Agent with 3-Layer Evaluation Harness",
+  "main": "src/reminder-agent.js",
+  "type": "commonjs",
+  "scripts": {
+    "eval": "node .harness/eval-runner.js",
+    "test": "node --test tests/agent.test.js"
+  },
+  "keywords": ["sdd", "non-deterministic", "harness-engineering", "llm-evals", "reminder-agent"],
+  "author": "Shreyash Pawar",
+  "license": "MIT"
+}
