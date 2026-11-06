@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Environment and Secrets
+.env
+.env.local
+*.log
+
+# Temporary test files
+*.tmp
+tests/test-tasks-*.json
+tests/persist-test-*.json
+
+# OS files
+.DS_Store
+Thumbs.db
