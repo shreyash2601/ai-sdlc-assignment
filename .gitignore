@@ -14,3 +14,10 @@ tests/persist-test-*.json
 # OS files
 .DS_Store
 Thumbs.db
+~$*
+
+# Submission Reports and Local Generator
+Assignment_Submission_Reflection_Report.*
+generate_report_docx.py
+*.docx
+
