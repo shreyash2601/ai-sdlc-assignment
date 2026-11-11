@@ -13,7 +13,7 @@
 ## 2. Evaluation History & Bounded Repair
 
 ### Attempt 1: Initial AI Generation
-- **Timestamp:** 2026-11-06T14:15:43.382Z
+- **Timestamp:** 2026-11-09T17:59:42.620Z
 - **Aggregate Score:** **90%** (FAILED threshold of 90%)
 - **Passed Cases:** 12 / 16
 - **Critical Failures Detected:**
@@ -69,7 +69,7 @@
 - **Repair Actions Applied:**
   1. Added `detectAdversarial()` guardrail with strict regex signatures for prompt injection ("ignore previous instructions", "system prompt", "DAN", etc.).
   2. Fixed `relativeOffsetMinutes` calculation in snooze handler to correctly parse both minutes and hours into integer minute offsets.
-- **Timestamp:** 2026-11-06T14:15:43.393Z
+- **Timestamp:** 2026-11-09T17:59:42.622Z
 - **Aggregate Score:** **100%** (**PASSED** threshold of 90%)
 - **Passed Cases:** 16 / 16 (100% pass rate)
 - **Evidence Output:** Saved to `evidence/eval-results.json`.

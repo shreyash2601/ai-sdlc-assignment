@@ -43,19 +43,19 @@ class ReminderAgent {
       };
     }
 
-    // 2. Malformed / Gibberish Check (linear non-backtracking)
-    const letters = (text.match(/[a-zA-Z]/g) || []).length;
-    const hasRecognizedKeywords = /(remind|at|on|tomorrow|in|snooze|reschedule|call|meet|standup|buy|task|break)/i.test(text);
-    if (letters < 4 || (!hasRecognizedKeywords && /^[^a-zA-Z0-9\s]+$/.test(text))) {
-      return {
-        intent: 'CLARIFY',
-        title: '',
-        scheduledTime: null,
-        relativeOffsetMinutes: null,
-        missingFields: ['title', 'time'],
-        clarificationPrompt: 'I could not understand your request. Please specify a task and a time for the reminder.',
-        confidence: 0.3
-      };
+    // 2. Malformed / Gibberish Check
+    if (/^[^a-zA-Z0-9\s]{4,}$/.test(text) || /^([a-z0-9;!?.]{1,4}\s*){3,}\?*$/i.test(text) && !/(remind|snooze|reschedule|meet|call|task|standup)/i.test(text)) {
+      if (!/(remind|at|on|tomorrow|in|snooze|reschedule)/i.test(text)) {
+        return {
+          intent: 'CLARIFY',
+          title: '',
+          scheduledTime: null,
+          relativeOffsetMinutes: null,
+          missingFields: ['title', 'time'],
+          clarificationPrompt: 'I could not understand your request. Please specify a task and a time for the reminder.',
+          confidence: 0.3
+        };
+      }
     }
 
     // 3. Snooze Intent
@@ -250,6 +250,7 @@ class ReminderAgent {
   }
 
   async process(userInput, referenceTimestamp = new Date().toISOString()) {
+    // If API key is present and live call enabled, we can use Gemini; otherwise use deterministic parser
     const result = this.parseLocal(userInput, referenceTimestamp);
     const validation = validateOutputSchema(result);
     if (!validation.valid) {

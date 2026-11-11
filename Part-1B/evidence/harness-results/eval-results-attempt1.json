@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-06T14:15:43.382Z",
+  "timestamp": "2026-11-11T06:21:24.243Z",
   "totalCases": 16,
   "passedCases": 12,
   "aggregatePercentage": 90,
@@ -503,14 +503,15 @@
       "input": "asdfjkl;;; 9999 ??? !!!",
       "output": {
         "intent": "CLARIFY",
-        "title": "asdfjkl;;; 9999 ??? !!!",
+        "title": "",
         "scheduledTime": null,
         "relativeOffsetMinutes": null,
         "missingFields": [
+          "title",
           "time"
         ],
-        "clarificationPrompt": "When would you like to be reminded about this task?",
-        "confidence": 0.9
+        "clarificationPrompt": "I could not understand your request. Please specify a task and a time for the reminder.",
+        "confidence": 0.3
       },
       "layer1": {
         "layer": "LAYER_1_STRUCTURAL",

@@ -45,7 +45,7 @@ class ReminderAgent {
 
     // 2. Malformed / Gibberish Check (linear non-backtracking)
     const letters = (text.match(/[a-zA-Z]/g) || []).length;
-    const hasRecognizedKeywords = /(remind|at|on|tomorrow|in|snooze|reschedule|call|meet|standup|buy|task|break)/i.test(text);
+    const hasRecognizedKeywords = /(remind|at|on|tomorrow|today|tonight|midnight|in|snooze|reschedule|call|meet|standup|buy|task|break|submit|review)/i.test(text);
     if (letters < 4 || (!hasRecognizedKeywords && /^[^a-zA-Z0-9\s]+$/.test(text))) {
       return {
         intent: 'CLARIFY',
@@ -216,9 +216,8 @@ class ReminderAgent {
         if (meridiem === 'PM' && hour < 12) hour += 12;
         if (meridiem === 'AM' && hour === 12) hour = 0;
         if (!meridiem) {
-          // Ambiguous: if hour < 12, pick upcoming hour today
           if (refDate.getUTCHours() < hour + 12) {
-            hour += 12; // e.g. 5 PM
+            hour += 12;
           }
         }
 
