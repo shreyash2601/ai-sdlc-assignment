@@ -1,13 +1,15 @@
-# AI-Augmented Software Development Life Cycle (SEZG534)
+# AI-Augmented Software Development Life Cycle
+
 ## Assignment 1: Spec-Driven Development & Harness Engineering
 
 **Student:** Shreyash Pawar  
-**Program:** M.Tech Software Engineering (WILP-CSIS), BITS Pilani  
-**Module:** AI-Augmented Software Development Life Cycle (SEZG534)  
+**Program:** M.Tech Software Engineering, BITS Pilani  
+**Module:** AI-Augmented Software Development Life Cycle
 
 ---
 
 ## Executive Summary
+
 This repository contains the complete, verified submission for **Assignment 1: Spec-Driven Development (SDD) & Harness Engineering**. The project demonstrates how formal specification artifacts produced through the GitHub Spec Kit lifecycle constrain and govern AI coding agents, and how deterministic and multi-layer evaluation harnesses independently sense defects, capture structured evidence, enforce bounded self-healing repairs, and maintain rigorous human accountability.
 
 ---
@@ -86,11 +88,13 @@ This repository contains the complete, verified submission for **Assignment 1: S
 ## Quickstart & Reproduction Guide
 
 ### Prerequisites
+
 - Node.js 20 or later (`node --version`)
 - Python 3.9+ (used only for generating the Word `.docx` file)
 - Git
 
 ### Running Part 1A (Deterministic Application)
+
 ```bash
 cd Part-1A
 
@@ -102,6 +106,7 @@ npm run harness
 ```
 
 **Expected Part 1A Outcome:**
+
 - Attempt 1 fails contract tests (capturing whitespace title and state transition violations).
 - Structured findings are captured in `Part-1A/evidence/harness-results/sensor-report-attempt1.json`.
 - Attempt 2 applies the self-healing repair; Gate 1 (Lint), Gate 2 (SAST), and Gate 3 (Tests) all **PASS** (12/12 tests passing).
@@ -110,6 +115,7 @@ npm run harness
 ---
 
 ### Running Part 1B (Non-Deterministic AI Application)
+
 ```bash
 cd Part-1B
 
@@ -121,6 +127,7 @@ npm run eval
 ```
 
 **Expected Part 1B Outcome:**
+
 - Attempt 1 evaluates the initial generation lacking prompt injection filters and snooze duration math (Score: 90% with 4 defective cases).
 - Structured findings are logged to `Part-1B/evidence/harness-results/eval-results-attempt1.json`.
 - Attempt 2 repairs the agent with prompt-injection defense and relative snooze offset parsing.
@@ -131,23 +138,14 @@ npm run eval
 
 ## Verification Matrix Summary
 
-| Dimension | Part 1A: Smart Task API | Part 1B: Reminder AI Agent |
-| :--- | :--- | :--- |
-| **Problem Type** | Deterministic REST API | Non-Deterministic AI Agent |
-| **Spec Kit Artifacts** | `constitution`, `spec`, `clarify`, `plan`, `tasks`, `analyze` | `constitution`, `spec`, `clarify`, `plan`, `tasks`, `analyze` |
-| **Feedforward Controls** | Zero-deps policy, atomic file persistence, REST status codes | Output Schema Contract, Invariant definitions, System prompt |
-| **Harness Gates** | 3 Gates (Lint Guard, SAST Security Guard, Contract Tests) | 3 Layers (Structural JSON, Invariant/Properties, Semantic Quality) |
-| **Benchmark Suite** | 12 automated binary tests (`node:test`) | 16 curated evaluation cases across 6 operational categories |
-| **Pre-Declared Threshold**| 100% test pass; 0 lint / security findings | Aggregate score $\ge 90.0\%$; zero safety/injection breaches |
-| **Observed Initial Fail** | Whitespace title allowed; completed $\rightarrow$ in_progress allowed | Snooze duration null; prompt injection payload passed |
-| **Repaired Outcome** | **100% PASS** on all 3 gates | **100% PASS** (Aggregate Score 100.0%) |
-| **Human Review Decision**| **ACCEPT** | **ACCEPT** |
-
----
-
-## Submission Deliverables
-1. **Source Code in GitHub Repository:** Full public repository structure as outlined above.
-2. **Demonstration Video:** Video showcasing both applications, test runs, and harness self-healing cycles.
-3. **Reflection Report:** Uploaded to LMS using the university format:
-   - Word DOCX: `Assignment_Submission_Reflection_Report.docx`
-   - Markdown: `Assignment_Submission_Reflection_Report.md`
+| Dimension                  | Part 1A: Smart Task API                                               | Part 1B: Reminder AI Agent                                         |
+| :------------------------- | :-------------------------------------------------------------------- | :----------------------------------------------------------------- |
+| **Problem Type**           | Deterministic REST API                                                | Non-Deterministic AI Agent                                         |
+| **Spec Kit Artifacts**     | `constitution`, `spec`, `clarify`, `plan`, `tasks`, `analyze`         | `constitution`, `spec`, `clarify`, `plan`, `tasks`, `analyze`      |
+| **Feedforward Controls**   | Zero-deps policy, atomic file persistence, REST status codes          | Output Schema Contract, Invariant definitions, System prompt       |
+| **Harness Gates**          | 3 Gates (Lint Guard, SAST Security Guard, Contract Tests)             | 3 Layers (Structural JSON, Invariant/Properties, Semantic Quality) |
+| **Benchmark Suite**        | 12 automated binary tests (`node:test`)                               | 16 curated evaluation cases across 6 operational categories        |
+| **Pre-Declared Threshold** | 100% test pass; 0 lint / security findings                            | Aggregate score $\ge 90.0\%$; zero safety/injection breaches       |
+| **Observed Initial Fail**  | Whitespace title allowed; completed $\rightarrow$ in_progress allowed | Snooze duration null; prompt injection payload passed              |
+| **Repaired Outcome**       | **100% PASS** on all 3 gates                                          | **100% PASS** (Aggregate Score 100.0%)                             |
+| **Human Review Decision**  | **ACCEPT**                                                            | **ACCEPT**                                                         |
